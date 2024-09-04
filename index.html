@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photogrammétrie 360°</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #viewer {
+            width: 400px;
+            height: 400px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            cursor: grab;
+        }
+        #viewer:active {
+            cursor: grabbing;
+        }
+    </style>
+</head>
+<body>
+    <div id="viewer"></div>
+
+    <script>
+        const viewer = document.getElementById('viewer');
+        const images = [];
+        const totalImages = 234; // Nombre total d'images
+        let currentIndex = 0;
+        let interval;
+        let isDragging = false;
+        let startX = 0;
+        let lastIndex = 0;
+        let allImagesLoaded = false; // Indicateur pour savoir si toutes les images sont chargées
+
+        // Fonction pour précharger les images
+        function preloadImages() {
+            let loadedImages = 0;
+            for (let i = 1; i <= totalImages; i++) {
+                const img = new Image();
+                img.src = `media/images/img${String(i).padStart(3, '0')}.png`;
+
+                img.onload = () => {
+                    loadedImages++;
+                    if (loadedImages === totalImages) {
+                        allImagesLoaded = true; // Toutes les images sont chargées
+                        startRotation(); // Démarre la rotation après le chargement
+                    }
+                };
+
+                images.push(img);
+            }
+        }
+
+        // Fonction pour afficher l'image courante
+        function showImage(index) {
+            viewer.style.backgroundImage = `url(${images[index].src})`;
+        }
+
+        // Fonction pour changer d'image et créer l'effet de rotation automatique
+        function rotateImage() {
+            if (allImagesLoaded) { // Ne change l'image que si tout est bien chargé
+                currentIndex = (currentIndex + 1) % totalImages; // Recommence à 0 une fois la dernière image atteinte
+                showImage(currentIndex);
+            }
+        }
+
+        // Démarre la rotation après que toutes les images sont préchargées
+        function startRotation() {
+            interval = setInterval(rotateImage, 100); // Ajuster la vitesse de rotation (ici, toutes les 100 ms)
+            showImage(currentIndex); // Afficher la première image immédiatement
+        }
+
+        // Gestion du clic et du déplacement de la souris
+        viewer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX;
+            lastIndex = currentIndex; // Sauvegarde la position actuelle
+            clearInterval(interval); // Arrête l'animation automatique
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.pageX - startX;
+                const imageStep = Math.floor(deltaX / 5); // Ajuster la sensibilité du mouvement
+                currentIndex = (lastIndex + imageStep) % totalImages;
+
+                // Pour éviter des indices négatifs
+                if (currentIndex < 0) {
+                    currentIndex += totalImages;
+                }
+
+                showImage(currentIndex);
+            }
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                interval = setInterval(rotateImage, 100); // Recommence la rotation automatique
+            }
+        });
+
+        // Lancer le préchargement des images lors du chargement de la page
+        window.onload = preloadImages;
+    </script>
+</body>
+</html>
