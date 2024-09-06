@@ -7,4 +7,11 @@ cv mettre toutes les images de la vidéo dans le dossier images pour faire la ph
 
 
 
+---
 
+autre problème : la vidéo bouge de partout car je n'ai pas de stabilisateur professionnel donc faut retoucher la vidéo 
+
+reperer le mouvement :
+ffmpeg -i input.mp4 -vf vidstabdetect=shakiness=10:accuracy=15 -f null -
+stabiliser : 
+ffmpeg -i input.mp4 -vf vidstabtransform=smoothing=30:input="transforms.trf" -c:a copy output.mp4

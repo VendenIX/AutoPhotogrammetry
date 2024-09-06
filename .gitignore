@@ -3,3 +3,5 @@ media
 *.jpg
 *.mp4 
 .DS_Store
+script.py
+*.trf

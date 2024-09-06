@@ -3,53 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photogrammétrie 360°</title>
+    <title>À VENDRE : Nissan Micra 2007</title>
     <style>
+        /* Global Styles */
         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Section 360° */
+        #viewer-container {
+            margin-top: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
         }
+
         #viewer {
-            width: 400px;
-            height: 400px;
+            width: 100%;
+            max-width: 1100px;
+            height: 600px;
             background-size: cover;
             background-repeat: no-repeat;
             cursor: grab;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
+
         #viewer:active {
             cursor: grabbing;
+        }
+
+        .small-text {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Section Images Présentation */
+        .images-section {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .car-image {
+            width: 48%;
+            margin-bottom: 20px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .car-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section Caractéristiques */
+        .features-section {
+            margin-top: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            line-height: 1.8;
+        }
+
+        .features-section h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            margin-bottom: 20px;
+        }
+
+        .feature-item strong {
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Centrer et afficher en colonne */
+            h1 {
+                font-size: 2rem;
+            }
+
+            #viewer {
+                width: 100%;
+                height: auto;
+                max-height: 400px;
+            }
+
+            .images-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .car-image {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .features-section {
+                padding: 20px;
+            }
+
+            .features-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .feature-item strong {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="viewer"></div>
+
+    <!-- Container for the 360 viewer -->
+    <div class="container">
+        <div id="viewer-container">
+            <h1>À VENDRE : Nissan Micra 2007</h1>
+            <div id="viewer"></div>
+            <p class="small-text">Vous pouvez cliquer sur l'image qui bouge pour recaler vers la gauche ou la droite</p>
+        </div>
+
+        <!-- Section pour les grandes images avant, arrière, intérieur -->
+        <div class="images-section">
+            <img src="media/images_HQ/front.jpg" alt="Avant de la voiture" class="car-image">
+            <img src="media/images_HQ/back.jpg" alt="Arrière de la voiture" class="car-image">
+            <img src="media/images_HQ/inside.jpg" alt="Intérieur de la voiture" class="car-image">
+            <img src="media/images_HQ/front2.jpg" alt="Avant de la voiture (angle différent)" class="car-image">
+        </div>
+
+        <!-- Section Caractéristiques de la voiture -->
+        <div class="features-section">
+            <h2>À Vendre : Voiture Parfaite pour Jeune Permis – Fiabilité et Tranquillité Assurées</h2>
+
+            <div class="feature-item">
+                <strong>Modèle :</strong> Petite citadine idéale pour débutants, avec une consommation modérée en essence (Sans-plomb 95) et une facilité de conduite remarquable.
+            </div>
+
+            <div class="feature-item">
+                <strong>Kilométrage :</strong> 66 114 km (mis à jour au 22 août 2024) – Faible kilométrage pour son âge !
+            </div>
+
+            <div class="feature-item">
+                <strong>Entretien :</strong>
+                <ul>
+                    <li>Batterie changée récemment (le 10 août 2020)</li>
+                    <li>Pneus avant et arrière neufs (changement effectué le 4 mai 2024)</li>
+                    <li>Contrôle technique effectué le 6 janvier 2024 : aucuns défauts majeurs</li>
+                    <li>Dernière vidange faite à 61 995 km, la prochaine dans 5 881 km</li>
+                </ul>
+            </div>
+
+            <div class="feature-item">
+                <strong>Équipements :</strong>
+                <ul>
+                    <li>Radio fonctionnelle avec lecteur CD, prise AUX et Bluetooth</li>
+                    <li>Fermeture centralisée avec verrouillage intérieur</li>
+                    <li>Radar de recul arrière pour des manœuvres sans stress</li>
+                    <li>Crochet d'attelage pratique pour petits chargements</li>
+                    <li>Direction assistée et climatisation</li>
+                </ul>
+            </div>
+
+            <div class="feature-item">
+                <strong>Extérieur :</strong> Couleur champagne (code C30G), carrosserie endommagée mais performances intactes.
+            </div>
+
+            <div class="feature-item">
+                <strong>Pourquoi cette voiture ?</strong> Avec son faible kilométrage, son entretien irréprochable, et ses équipements pratiques, cette voiture est le choix parfait pour un jeune permis.
+            </div>
+        </div>
+    </div>
 
     <script>
         const viewer = document.getElementById('viewer');
         const images = [];
-        const totalImages = 234; // Nombre total d'images
+        const totalImages = 234; // Nombre total d'images WebP
         let currentIndex = 0;
         let interval;
         let isDragging = false;
         let startX = 0;
         let lastIndex = 0;
-        let allImagesLoaded = false; // Indicateur pour savoir si toutes les images sont chargées
+        let allImagesLoaded = false;
 
-        // Fonction pour précharger les images
+        // Fonction pour précharger les images WebP
         function preloadImages() {
             let loadedImages = 0;
             for (let i = 1; i <= totalImages; i++) {
                 const img = new Image();
-                img.src = `media/images/img${String(i).padStart(3, '0')}.png`;
+                img.src = `media/images/img${String(i).padStart(3, '0')}.webp`; 
 
                 img.onload = () => {
                     loadedImages++;
                     if (loadedImages === totalImages) {
-                        allImagesLoaded = true; // Toutes les images sont chargées
-                        startRotation(); // Démarre la rotation après le chargement
+                        allImagesLoaded = true;
+                        startRotation();
                     }
                 };
 
@@ -58,43 +242,45 @@
         }
 
         // Fonction pour afficher l'image courante
+        // double buffering (précharger la prochaine image avant d’afficher)
         function showImage(index) {
-            viewer.style.backgroundImage = `url(${images[index].src})`;
+            const nextImage = new Image();
+            nextImage.src = images[index].src;
+
+            nextImage.onload = () => {
+                viewer.style.backgroundImage = `url(${nextImage.src})`;
+            };
         }
 
         // Fonction pour changer d'image et créer l'effet de rotation automatique
         function rotateImage() {
-            if (allImagesLoaded) { // Ne change l'image que si tout est bien chargé
-                currentIndex = (currentIndex + 1) % totalImages; // Recommence à 0 une fois la dernière image atteinte
+            if (allImagesLoaded) {
+                currentIndex = (currentIndex + 1) % totalImages;
                 showImage(currentIndex);
             }
         }
 
         // Démarre la rotation après que toutes les images sont préchargées
         function startRotation() {
-            interval = setInterval(rotateImage, 100); // Ajuster la vitesse de rotation (ici, toutes les 100 ms)
-            showImage(currentIndex); // Afficher la première image immédiatement
+            interval = setInterval(rotateImage, 100);
+            showImage(currentIndex);
         }
 
-        // Gestion du clic et du déplacement de la souris
         viewer.addEventListener('mousedown', (e) => {
             isDragging = true;
             startX = e.pageX;
-            lastIndex = currentIndex; // Sauvegarde la position actuelle
-            clearInterval(interval); // Arrête l'animation automatique
+            lastIndex = currentIndex;
+            clearInterval(interval);
         });
 
         window.addEventListener('mousemove', (e) => {
             if (isDragging) {
                 const deltaX = e.pageX - startX;
-                const imageStep = Math.floor(deltaX / 5); // Ajuster la sensibilité du mouvement
+                const imageStep = Math.floor(deltaX / 5);
                 currentIndex = (lastIndex + imageStep) % totalImages;
-
-                // Pour éviter des indices négatifs
                 if (currentIndex < 0) {
                     currentIndex += totalImages;
                 }
-
                 showImage(currentIndex);
             }
         });
@@ -102,12 +288,12 @@
         window.addEventListener('mouseup', () => {
             if (isDragging) {
                 isDragging = false;
-                interval = setInterval(rotateImage, 100); // Recommence la rotation automatique
+                interval = setInterval(rotateImage, 100);
             }
         });
 
-        // Lancer le préchargement des images lors du chargement de la page
         window.onload = preloadImages;
     </script>
+
 </body>
 </html>
